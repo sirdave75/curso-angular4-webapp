@@ -3,20 +3,23 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+
 
 //Rutas
 import { routing, appRoutingProviders } from  './app.routing';
 
 //Componentes
+import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { ErrorComponent } from './components/error.component';
+import { ProductosListComponent } from './components/productos-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    ProductosListComponent
   ],
   imports: [
     BrowserModule,
