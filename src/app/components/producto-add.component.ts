@@ -16,7 +16,7 @@ export  class  ProductoAddComponent{
     public titulo: string;
     public producto: Producto;
     public filesToUpload;
-    public reaultUpload;
+    public resultUpload;
 
     constructor(
         private _productoService: ProductoService,
@@ -33,11 +33,11 @@ export  class  ProductoAddComponent{
 
     onSubmit(){
         console.log(this.producto);
-        if(this.filesToUpload.length >=1) {
+        if(this.filesToUpload.length >= 1) {
             this._productoService.makeFileRequest(GLOBAL.url + 'upload-file', [], this.filesToUpload).then((result) => {
                 console.log(result);
-                this.reaultUpload = result;
-                this.producto.imagen = this.reaultUpload.filename;
+                this.resultUpload = result;
+                this.producto.imagen = this.resultUpload.filename;
                 this.saveProducto();
 
             }, (error) => {
