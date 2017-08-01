@@ -21,7 +21,7 @@ export  class  ProductoAddComponent{
     constructor(
         private _productoService: ProductoService,
         private _route: ActivatedRoute,
-        private _router: Router,
+        private _router: Router
     ){
         this.titulo = 'Crear un nuevo producto';
         this.producto = new Producto(0,'','',0,'');
@@ -33,7 +33,7 @@ export  class  ProductoAddComponent{
 
     onSubmit(){
         console.log(this.producto);
-        if(this.filesToUpload.length >= 1) {
+        if(this.filesToUpload && this.filesToUpload.length >= 1) {
             this._productoService.makeFileRequest(GLOBAL.url + 'upload-file', [], this.filesToUpload).then((result) => {
                 console.log(result);
                 this.resultUpload = result;

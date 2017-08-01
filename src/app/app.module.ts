@@ -14,6 +14,8 @@ import { HomeComponent } from './components/home.component';
 import { ErrorComponent } from './components/error.component';
 import { ProductosListComponent } from './components/productos-list.component';
 import { ProductoAddComponent } from './components/producto-add.component';
+import { ProductoDetailComponent } from './components/producto-detail.component';
+import { ProductoEditComponent } from './components/producto-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProductoAddComponent } from './components/producto-add.component';
     HomeComponent,
     ErrorComponent,
     ProductosListComponent,
-    ProductoAddComponent
+    ProductoAddComponent,
+    ProductoDetailComponent,
+    ProductoEditComponent
   ],
   imports: [
     BrowserModule,
