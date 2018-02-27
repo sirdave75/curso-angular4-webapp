@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Producto } from '../models/producto';
 import { GLOBAL } from './global';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 
@@ -12,42 +13,40 @@ export class ProductoService{
     public url: string;
 
     constructor(
-        public _http: Http
+        public _http: HttpClient
     ){
         this.url = GLOBAL.url;
     }
 
-    getProductos(){
+    getProductos(): Observable<any>{
 
-           return this._http.get(this.url + 'productos').map(res => res.json());
+           return this._http.get(this.url + 'productos');
     }
 
-    getProducto(id){
-        return this._http.get(this.url + 'producto/'+id).map(res => res.json());
+    getProducto(id): Observable<any>{
+        return this._http.get(this.url + 'producto/'+id);
     }
 
 
-    addProducto(producto: Producto){
+    addProducto(producto: Producto): Observable<any>{
             let json = JSON.stringify(producto);
             let params = 'json=' + json;
-            let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+            let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-            return this._http.post(this.url + 'productos', params, {headers: headers})
-                .map(res => res.json());
+            return this._http.post(this.url + 'productos', params, {headers: headers});
     }
 
-    editProducto(id, producto: Producto){
+    editProducto(id, producto: Producto): Observable<any>{
         let json = JSON.stringify(producto);
         let params = "json="+json;
-        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-        return this._http.post(this.url + 'update-producto/'+id, params, {headers: headers})
-            .map(res => res.json());
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post(this.url + 'update-producto/'+id, params, {headers: headers});
     }
 
 
-    deleteProducto(id){
+    deleteProducto(id): Observable<any>{
 
-        return this._http.get(this.url + 'delete-producto/'+id).map(res => res.json());
+        return this._http.get(this.url + 'delete-producto/'+id);
     }
 
     /*enviar archivos tipe file al servidor*/
